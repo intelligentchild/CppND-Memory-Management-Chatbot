@@ -1,3 +1,0 @@
-/run/media/shiv/Mist/Code-X/nanodegree/CppND-Memory-Management-Chatbot/build/CMakeFiles/rebuild_cache.dir
-/run/media/shiv/Mist/Code-X/nanodegree/CppND-Memory-Management-Chatbot/build/CMakeFiles/membot.dir
-/run/media/shiv/Mist/Code-X/nanodegree/CppND-Memory-Management-Chatbot/build/CMakeFiles/edit_cache.dir

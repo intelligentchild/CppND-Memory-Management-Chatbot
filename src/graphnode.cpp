@@ -1,8 +1,6 @@
 #include "graphedge.h"
 #include "graphnode.h"
 
-#include<iostream>
-
 GraphNode::GraphNode(int id)
 {
     _id = id;
@@ -12,8 +10,8 @@ GraphNode::~GraphNode()
 {
     //// STUDENT CODE
     ////
-    std::cout<<"Graph Node Destructor chatbot memory: "<< &(*_chatBot) <<"\n";
-    //delete _chatBot; 
+
+    delete _chatBot; 
 
     ////
     //// EOF STUDENT CODE
@@ -38,13 +36,13 @@ void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
 ////
 void GraphNode::MoveChatbotHere(ChatBot *chatbot)
 {
-    _chatBot = std::make_unique(chatbot);
+    _chatBot = chatbot;
     _chatBot->SetCurrentNode(this);
 }
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
-    newNode->MoveChatbotHere(_chatBot.get());
+    newNode->MoveChatbotHere(_chatBot);
     _chatBot = nullptr; // invalidate pointer at source
 }
 ////
