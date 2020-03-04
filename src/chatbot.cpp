@@ -44,7 +44,57 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
+ChatBot::ChatBot(const ChatBot &source){
+    std::cout << "ChatBot Copy Constructor" << std::endl;
+    
+    // since image is exclusice owned resource
+    _image = new wxBitmap(source._image->ConvertToImage());
+    // all are handles hence reffrences are copied
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+}
+ChatBot &ChatBot::operator=(const ChatBot &source){
+    std::cout << "ChatBot Copy Assignment Operator" << std::endl;
+    if(this == &source)
+        return *this;
 
+    // since image is exclusice owned resource
+    _image = new wxBitmap(source._image->ConvertToImage());
+    // following are handles hence reffrences are copied
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    return *this;
+}
+ChatBot::ChatBot(ChatBot &&source){
+    std::cout << "ChatBot Move Constructor" << std::endl;
+    // since image is exclusice owned resource
+    _image = source._image;
+    source._image = nullptr; 
+    // following are handles hence reffrences are copied
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+}
+ChatBot &ChatBot::operator=(ChatBot &&source){
+    std::cout << "ChatBot Move Assignment Operator" << std::endl;
+    if(this == &source)
+        return *this;
+
+    // since image is exclusice owned resource
+    _image = source._image;
+    source._image = nullptr; 
+    // all are handles hence reffrences are copied
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic = source._chatLogic;   
+    _chatLogic->SetChatbotHandle(this);
+    return *this;
+}
 ////
 //// EOF STUDENT CODE
 
