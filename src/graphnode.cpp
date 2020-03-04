@@ -8,13 +8,7 @@ GraphNode::GraphNode(int id)
 }
 
 GraphNode::~GraphNode()
-{
-    //// STUDENT CODE
-    ////
-
-    ////
-    //// EOF STUDENT CODE
-}
+{}
 
 void GraphNode::AddToken(std::string token)
 {
@@ -31,13 +25,9 @@ void GraphNode::AddEdgeToChildNode(GraphEdge &&edge)
     _childEdges.push_back(std::move(edge));
 }
 
-//// STUDENT CODE
-////
-void GraphNode::MoveChatbotHere(ChatBot &&chatbot)
+void GraphNode::MoveChatbotHere(ChatBot chatbot)
 {
-    std::cout << "chatbot address " << &chatbot << std::endl;
     _chatBot = std::move(chatbot);
-    std::cout << "chatbot address " << &_chatBot << std::endl;
     _chatBot.SetCurrentNode(this);
 }
 
@@ -45,16 +35,8 @@ void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
     newNode->MoveChatbotHere(std::move(_chatBot));
 }
-////
-//// EOF STUDENT CODE
 
 GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
 {
-    //// STUDENT CODE
-    ////
-
     return &_childEdges[index];
-
-    ////
-    //// EOF STUDENT CODE
 }
